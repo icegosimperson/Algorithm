@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+int solution(int array[], size_t array_len) 
+{
+    int answer = 0;
+    int count = 0; //반복되는 횟수
+    int check = 0; //반복 확인 변수
+
+    for(int i = 0; i < array_len; i++)
+    {
+        for(int j = i; j < array_len;j++)
+        {
+            if (array[i] == array[j]) //배열 길이만큼 비교
+                count++; //배열 값이 같을 경우 카운트 값 증가 
+        }
+
+        if(count > check) 
+        {
+            answer = array[i]; //반복된 배열 값이 answer 출력
+            check = count; //check값 증가 
+        }
+
+        else if(count == check) //반복 횟수가 같을 경우
+        {
+            answer = -1; //-1 출력 
+        }
+
+        count = 0; //count값 초기화
+    }
+    return answer;
+}
