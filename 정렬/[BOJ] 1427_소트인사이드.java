@@ -1,3 +1,7 @@
+// 선택정렬 시 인덱스 번호를 비교하는 이유 : swap시 정확한 위치(인덱스)에서 값을 교환하기 위함
+// 최대값을 나누고 swap하는 이유 : 최대값을 찾는 경우에만 swap하기 위함
+
+
 import java.io.*;
 import java.util.Scanner;
 // 시간 복잡도 : 버블 정렬 O(N^2)
