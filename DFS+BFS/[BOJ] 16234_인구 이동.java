@@ -14,8 +14,8 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         n = Integer.parseInt(st.nextToken()); // 총 칸의 크기 
-        L = Integer.parseInt(st.nextToken()); // 계란 이동의 범위의 최솟값
-        R = Integer.parseInt(st.nextToken()); // 계란 이동 범위의 최댓값
+        L = Integer.parseInt(st.nextToken()); 
+        R = Integer.parseInt(st.nextToken()); 
 
         board = new int[n][n]; 
 
