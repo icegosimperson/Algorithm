@@ -1,4 +1,4 @@
-// LRU
+// LIS
 import java.io.*;
 import java.util.*;
 
