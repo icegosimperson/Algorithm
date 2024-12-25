@@ -3,7 +3,7 @@ import java.util.*;
 
 // 매개 변수 탐색
 // 중복 원소에 대한 길이 = (upper bound - lower bound)
-public class Main {
+public class BOJ_10816 {
     public static void main(String[] args) throws IOException {
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     	StringTokenizer st;
