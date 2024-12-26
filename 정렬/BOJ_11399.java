@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 // 각 사람이 돈을 인출하는데 필요한 시간의 합의 최솟값
-public class Main {
+public class BOJ_11399 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
