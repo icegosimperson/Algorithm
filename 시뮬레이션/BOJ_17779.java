@@ -5,11 +5,11 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 class BOJ_17779{
-    private static int[][] A;
+    hrows IOEx    private static int[][] A;
     private static int total=0;
     private static int N;
     private static int min = Integer.MAX_VALUE;
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) tception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
 
