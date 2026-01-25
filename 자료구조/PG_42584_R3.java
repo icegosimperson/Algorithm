@@ -1,6 +1,6 @@
 import java.util.*;
 
-class PG_42584_R {
+class PG_42584_R3 {
     public int[] solution(int[] prices) {
         int[] answer = new int[prices.length];
         ArrayDeque<Integer> deque = new ArrayDeque<>();
