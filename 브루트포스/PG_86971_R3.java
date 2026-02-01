@@ -1,0 +1,46 @@
+import java.util.*;
+
+class PG_86971_R3 {
+    ArrayList<Integer>[] graph;
+    public int solution(int n, int[][] wires) {
+        int minDiff = n+1;
+        graph = new ArrayList[n+1];
+        for(int i=1; i<=n; i++){
+            graph[i] = new ArrayList<>();
+        }
+        for(int[] w : wires){
+            graph[w[0]].add(w[1]);
+            graph[w[1]].add(w[0]);
+        }
+        for(int[] w : wires){
+            int v1 = w[0];
+            int v2 = w[1];
+            graph[v1].remove(Integer.valueOf(v2));
+            graph[v2].remove(Integer.valueOf(v1));
+            int cnt = bfs(v1, n);
+            int diff = Math.abs(cnt - (n-cnt));
+            minDiff = Math.min(minDiff, diff);
+            graph[v1].add(v2);
+            graph[v2].add(v1);
+        }
+        return minDiff;
+    }
+    public int bfs(int start, int n){
+        Queue<Integer> queue = new ArrayDeque<>();
+        boolean[] visited = new boolean[n+1];
+        queue.add(start);
+        visited[start] = true;
+        int cnt = 1;
+        while(!queue.isEmpty()){
+            int cur = queue.poll();
+            for(int next : graph[cur]){
+                if(!visited[next]){
+                    visited[next] = true;
+                    queue.add(next);
+                    cnt++;
+                }
+            }
+        }
+        return cnt;
+    }
+}
