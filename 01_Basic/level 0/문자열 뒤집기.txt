@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdlib.h>
+
+char* solution(const char* my_string) 
+{
+    int p = strlen(my_string);
+    char* answer = (char*)malloc(p);
+    
+    for(int i=0; i<p+1; i++)
+        answer[i]=my_string[p-1-i];
+    
+    return answer;
+}
