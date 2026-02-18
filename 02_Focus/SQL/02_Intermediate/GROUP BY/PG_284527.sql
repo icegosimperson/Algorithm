@@ -1,0 +1,18 @@
+--1) 그룹화의 범위
+--- SELECT에 집계 함수(SUM) 외에 다른 컬럼(NAME, EMAIL 등)이 있다면,
+--    - 이 컬럼들도 GROUP BY에 모두 포함시켜야 데이터의 무결성이 보장
+--    - 안해도 무관
+--2) 최상위 값 추출(가장 ~한 것): ORDER BY와 LIMIT 1
+
+SELECT
+    SUM(HG.SCORE) AS SCORE,
+    HG.EMP_NO AS EMP_NO,
+    HE.EMP_NAME AS EMP_NAME,
+    HE.POSITION AS POSITION,
+    HE.EMAIL AS EMAIL
+FROM HR_EMPLOYEES AS HE
+JOIN HR_GRADE AS HG ON HE.EMP_NO = HG.EMP_NO
+WHERE HG.YEAR = '2022'
+GROUP BY HG.EMP_NO
+ORDER BY SCORE DESC
+LIMIT 1;
