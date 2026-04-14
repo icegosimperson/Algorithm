@@ -12,3 +12,27 @@ class PG_64065 {
         return answer.stream().mapToInt(x->x).toArray();
     }
 }
+
+/*
+import java.util.*;
+class Solution {
+    public int[] solution(String s) {
+        s = s.substring(2, s.length()-2);
+        String[] split = s.split("\\},\\{"); // }, { 기준으로 자르기
+        Arrays.sort(split, (a, b) -> a.length() - b.length());
+        List<Integer> answer = new ArrayList<>();
+        Set<Integer> set = new HashSet<>();
+        for(String str : split){
+            String[] nums = str.split(",");
+            for(String n : nums){
+                int num = Integer.parseInt(n);
+                if(!set.contains(num)){
+                    set.add(num);
+                    answer.add(num);
+                }
+            }
+        }
+        return answer.stream().mapToInt(x->x).toArray();
+    }
+}
+ */
