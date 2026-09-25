@@ -8,40 +8,44 @@ public class Main {
         int[] black = new int[200001];
         int[] color = new int[200001];
         int offset = 100000;
-        int cur = 0; // 현재 위치
+        int cur = 0;
         for (int i = 0; i < n; i++) {
             int x = sc.nextInt();
             char dir = sc.next().charAt(0);
-            int next; // 다음 위치
-            if(dir=='L'){ // 흰색 타일
+            int next;
+            if(dir=='L'){ // 흰색
                 next = cur - x + 1;
-                for(int j=next; j<=cur; j++){
+                int start = Math.min(cur, next);
+                int end = Math.max(cur, next);
+                for(int j=start; j<=end; j++){
                     int idx = j + offset;
                     white[idx]++;
                     if(white[idx]>=2 && black[idx]>=2){
-                        color[idx] = 3; // gray
+                        color[idx] = 3;
                     } else{
-                        color[idx] = 1; // white
+                        color[idx] = 1;
                     }
                 }
-            } else{ // 검은색 타일
+            } else{ // R, 블랙
                 next = cur + x - 1;
-                for(int j=cur; j<=next; j++){
+                int start = Math.min(cur, next);
+                int end = Math.max(cur, next);
+                for(int j=start; j<=end ;j++){
                     int idx = j + offset;
                     black[idx]++;
                     if(black[idx]>=2 && white[idx]>=2){
-                        color[idx] = 3; // gray
+                        color[idx] = 3;
                     } else{
-                        color[idx] = 2; // black
+                        color[idx] = 2;
                     }
                 }
             }
             cur = next;
         }
-        // 흰색, 검은색, 회색 각각 타일 수 출력
-        int whiteCnt = 0;
-        int blackCnt = 0;
-        int grayCnt = 0;
+        // Please write your code here.
+        int whiteCnt=0;
+        int blackCnt=0;
+        int grayCnt=0;
         for(int i=0; i<color.length; i++){
             if(color[i]==1){
                 whiteCnt++;
@@ -51,6 +55,6 @@ public class Main {
                 grayCnt++;
             }
         }
-        System.out.println(whiteCnt + " " + blackCnt + " " + grayCnt);
+        System.out.println(whiteCnt + " "  + blackCnt + " " + grayCnt);
     }
 }
