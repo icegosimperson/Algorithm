@@ -3,23 +3,23 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
-        int[] arr = new int[2001];
         int cur = 0;
-        // 음수 좌표 offset 필요
+        int[] arr = new int[2001];
+        int offset = 1000;
         for (int i = 0; i < N; i++) {
             int x = sc.nextInt();
             char dir = sc.next().charAt(0);
-            // 2번 이상 지나간 영역의 크기를 출력(좌표x)
+            // [k, k+1]
             int next;
-            if(dir=='R'){
-                next = cur + x;
-            } else{
+            if(dir=='L'){
                 next = cur - x;
+            } else{ // dir=='R'
+                next = cur + x;
             }
-            int start = Math.min(cur, next);
-            int end = Math.max(cur, next);
-            for(int k=start; k<end; k++){
-                arr[k+1000]++;
+            int start = Math.min(next, cur);
+            int end = Math.max(next, cur);
+            for(int j=start; j<end; j++){
+                arr[j+offset]++;
             }
             cur = next;
         }
