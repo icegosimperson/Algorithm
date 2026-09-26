@@ -13,15 +13,19 @@ public class Main {
             arr[i] *= 2;
             for(int j=0; j<n; j++){
                 int score = 0;
-                int[] rArr = new int[n-1];
-                int temp = 0;
+                int prev = 0;
+                boolean hasPrev = false;
                 for(int k=0; k<n; k++){
-                    if(k!=j){
-                        rArr[temp++] = arr[k];
+                    if(k==j){
+                        continue;
                     }
-                }
-                for(int k=0; k<rArr.length-1; k++){
-                    score += Math.abs(rArr[k] - rArr[k+1]);
+                    if(!hasPrev){
+                        prev = arr[k];
+                        hasPrev = true;
+                    } else{
+                        score += Math.abs(prev - arr[k]);
+                        prev = arr[k];
+                    }
                 }
                 min = Math.min(min, score);
             }
