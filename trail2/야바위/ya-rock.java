@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Main {
-    public static int maxCnt = 0;
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -13,21 +12,21 @@ public class Main {
             b[i] = sc.nextInt();
             c[i] = sc.nextInt();
         }
-        // N번 시행 후 얻을 수 있는 최대 점수 출력
-        for(int start=1; start<=3; start++){
-            int stone = start;
+        int maxCnt = 0;
+        for(int s=1; s<=3; s++){
             int cnt = 0;
+            int cur = s;
             for(int i=0; i<n; i++){
-                if(stone==a[i]){
-                    stone = b[i];
-                } else if(stone==b[i]){
-                    stone = a[i];
+                if(cur==a[i]){
+                    cur = b[i];
+                } else if(cur==b[i]){
+                    cur = a[i];
                 }
-               if(stone==c[i]){
-                cnt++;
-               } 
+                if(cur==c[i]){
+                    cnt++;
+                }
             }
-            maxCnt = Math.max(cnt, maxCnt);
+            maxCnt = Math.max(maxCnt, cnt);
         }
         System.out.println(maxCnt);
     }
