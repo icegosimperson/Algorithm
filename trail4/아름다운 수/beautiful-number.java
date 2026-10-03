@@ -1,43 +1,41 @@
-import java.util.Scanner;
+// 해설 풀이
+import java.util.*;
+
 public class Main {
-    static int n;
-    static int answer = 0;
-    static int[] arr;
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        n = sc.nextInt();
-        // Please write your code here.
-        arr = new int[n];
-        dfs(0);
-        System.out.println(answer);
+    public static int n;
+    public static int ans;
+    public static ArrayList<Integer> list = new ArrayList<>();
+    public static boolean isBeautiful(){
+        for(int i=0; i<n; i+= list.get(i)){
+            if(i + list.get(i)-1 >=n){
+                return false;
+            }
+            for(int j=i; j<i+list.get(i); j++){
+                if(list.get(j)!=list.get(i)){
+                    return false;
+                }
+            }
+        }
+        return true;
     }
-    public static void dfs(int depth){
-        if(depth==n){
-            if(isValid(arr)){
-                answer++;
+    public static void count(int cnt){
+        if(cnt==n){
+            if(isBeautiful()){
+                ans++;
             }
             return;
         }
         for(int i=1; i<=4; i++){
-            arr[depth] = i;
-            dfs(depth+1);
+            list.add(i);
+            count(cnt+1);
+            list.remove(list.size()-1);
         }
     }
-    // if(depth==len)이 종료 조건일 듯
-    public static boolean isValid(int[] arr){
-        int cur = arr[0];
-        int cnt = 1;
-        for(int i=1; i<arr.length; i++){
-            if(arr[i]==cur){
-                cnt++;
-            } else{
-                if(cnt%cur!=0){
-                    return false;
-                }
-                cur = arr[i];
-                cnt = 1;
-            }
-        }
-        return cnt % cur == 0;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+        count(0);
+        System.out.println(ans);
+        // Please write your code here.
     }
 }
